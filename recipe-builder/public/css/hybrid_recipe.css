@@ -1,0 +1,222 @@
+body
+{
+        background-color: whitesmoke
+}
+
+.header
+{
+        height: 20px;
+        width:99%;
+        overflow: hidden;
+        background-color: #ca7d7d;
+        padding: 20px 10px;
+}
+
+.heading
+{
+        font-family: oswald;
+        color: rgb(60, 68, 71);
+        text-align: left;
+        background-color: #ffffff;
+        padding:0.9%;
+        /* height: 8%; */
+        border-bottom: 1px solid rgb(187, 178, 178);    
+}
+
+.font_size
+{
+        font-size: 22px;
+}
+
+.gadget_list
+{
+        font-size: 20px; 
+        font-family: 'Times New Roman', Times, serif;
+        color: rgb(75, 71, 71);
+        overflow-wrap: break-word;    
+}
+
+.gadget_name
+{
+        overflow-wrap: break-word;
+        font-family: 'Times New Roman', Times, serif;
+}
+
+.gadget_name:hover
+{
+        color:rgba(212, 212, 30, 0.979);
+}
+
+.col1
+{
+    background-color: transparent;
+    border: 1px solid #C0C0C0;
+    height: 250px;
+    overflow: hidden;
+    margin: 0 0% 2.5% 3.5%;
+    max-width: 20% !important;
+    box-shadow: 3px 3px 13px #989191;
+}    
+
+.col1:hover
+{
+        outline: 2px solid #70abc9
+}
+
+.sidenav
+{
+        background-color: rgb(233, 231, 229);
+        border-right:1px solid #C0C0C0;
+        padding-right: 0;
+        box-shadow: 3px 0px 6px #9c9090;
+        height: 87vh;
+    	overflow-y: auto;
+}
+
+/* .active
+{
+        font-size: 15px;
+} */
+
+.nav-tab-border
+{
+        border: 1px solid #bbbbbb !important;
+        border-radius: 2px !important;
+        font-size: 13px;
+        line-height: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        width: 45px;
+        /* width: 60px; */
+}
+
+.gadget-details-nav-tab
+{
+        background-color: #e0e0e0;
+        width: 115.8%;
+        margin-left: -7.5%;
+    
+}
+
+.gadget-list-div
+{
+        padding-top: 5px;
+        text-align: center;
+        margin: 0% 0 0 0%;
+        border-bottom: 2px solid #fffefecc;
+}
+
+.gadget-list-div:hover
+{
+        box-shadow: 3px 0px 5px #bdb4b4;
+        background-color: #ccc2c2;
+}
+
+.gadget-title
+{    
+        overflow-wrap: break-word;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;    
+}
+
+/* .spandiv{
+    float: left;
+}*/
+
+.hamburger-menu-div
+{
+        float: right;
+        padding-top: 1px;
+        font-size: 20px;
+} 
+
+.gadget-layout-image
+{
+        text-align: center;
+        padding-top: 33px;
+}
+
+.tab-content
+{
+        text-align: center;
+}
+
+#recipe_metadata_panel, #flip {
+        padding: 5px;
+        text-align: center;
+        background-color: #d2d4cc;
+        border: solid 1px #a7a0a0;
+        overflow-wrap: break-word;
+        font-family: 'Times New Roman', Times, serif;
+
+    }
+    
+#recipe_metadata_panel {
+        padding: 50px;
+        display: none;
+}
+
+.recipe-details-nav-tab
+{
+	font-size: 13px;
+    font-weight: bolder;
+    /* background-color:
+    border: 1px solid #a09797cc; */
+}
+
+.custom-nav-item
+{
+	width : 25%;
+}
+
+.custom-nav-link
+{
+	padding : 8%;
+	text-align : center;
+	/* width : 41px;55px */
+	height: 28px;
+	width: 68px;
+    padding-top: 4px !important;
+}
+
+.log-section-view
+{
+	background-color: #000000;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    color: #00ff00;
+    text-align: left;
+}
+
+.maximize-gadget-box
+{
+    min-width: 91%;
+    height: 71vh !important;
+    transition: min-width 1s ease-in-out, height 1s ease-in-out !important;
+}
+
+.show-tabs
+{
+    margin-left: -1.5%;
+    width: 103% !important;
+    /* transition: 1s ease-in-out; */
+}
+
+.show-gadget-log-panel
+{
+	padding: 0.5% 1% 3% 1% !important;
+    /* padding: 1% !important; */
+    width: 103% !important;
+    transition: 1s ease-in-out !important;
+    height: 67vh !important;
+}
+
+.log-view-button:hover{
+
+    opacity: 1 !important;
+}
+
+.tab-hidden
+{
+    display: none !important;
+}

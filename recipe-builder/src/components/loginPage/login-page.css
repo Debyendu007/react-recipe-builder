@@ -1,0 +1,38 @@
+#login-card {
+  height: 100vh;
+}
+
+.card-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-body-content {
+  margin-top: -20%;
+}
+
+.sign-in-page-text {
+  text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+#btn-login-container, #btn-login {
+  width: 100%;
+}
+
+#btn-login {
+  font-weight: lighter;
+  font-size: 1.05rem;
+}
+
+#btn-login:hover {
+  color: #ffffff !important;
+}

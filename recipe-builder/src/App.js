@@ -9,7 +9,7 @@ function App() {
   return (
     <React.Fragment>
       <Header isLoggedIn={isLoggedIn}/>
-      <Body />
+      <Body isLoggedIn={isLoggedIn} />
     </React.Fragment>
   );
 }
