@@ -1,15 +1,36 @@
 import React from "react";
 import "./body.css";
+import {useDispatch} from "react-redux";
+
 import {LoginPage} from "../loginPage/login-page";
 import {LandingPage} from "../landingPage/landing-page";
 import Container from "react-bootstrap/Container";
+import LoadingOverlay from 'react-loading-overlay';
+import {Activating} from "./../../actions/activate";
 
 function BodySection(props) {
-  if(props.isLoggedIn) {
-    return <LandingPage />
+  const dispatch = useDispatch();
+
+  if(props.isActivated) {
+    if(props.isLoggedIn) {
+      return <LandingPage />
+    }
+    else {
+      return <LoginPage />
+    }
   }
   else {
-    return <LoginPage />
+
+    dispatch(Activating());
+
+    return (
+      <LoadingOverlay
+        className="page-loader"
+        active={true}
+        spinner
+        text="Loading...">
+      </LoadingOverlay>
+    )
   }
 }
 

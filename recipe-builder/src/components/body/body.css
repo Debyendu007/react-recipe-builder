@@ -1,3 +1,8 @@
 .mt-62 {
   margin-top: 62px;
 }
+
+.page-loader {
+  height: 100vh;
+  margin: 0% -1% 0% -1%;
+}
