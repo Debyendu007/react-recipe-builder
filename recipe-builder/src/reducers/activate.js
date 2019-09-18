@@ -1,4 +1,7 @@
 import {ACTION_ACTIVATION} from "../action-list";
+import {useDispatch} from "react-redux";
+import {ActivateGadget} from "./../apiCalls/web-sdk-req";
+var dispatch = useDispatch();
 
 const initialActivationState = {
   activating: false,
@@ -9,6 +12,7 @@ const initialActivationState = {
 const activateGadgetReducer = (state=initialActivationState, action) => {
   switch(action.type) {
     case ACTION_ACTIVATION.ACTIVATE_GADGET:
+      dispatch(ActivateGadget());
       return {
         activating: true,
         activated: false,

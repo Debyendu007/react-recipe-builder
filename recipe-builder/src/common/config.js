@@ -1,0 +1,57 @@
+import {ENV} from "./deploymentConfig";
+
+var G_absolutePath = "";
+const METHOD = "http";
+
+const DEV_2X = "192.168.4.104";
+const SCYLLA_PATH_2X_DEV = DEV_2X;
+
+const PROD_2X = "garuda2x.sbx.technology";
+const SCYLLA_PATH_2X = PROD_2X;
+
+const SCYLLA_PORT = 8090;
+const APACHE_PORT = 8080;
+const HYBRID_RECIPE_PORT = 8700;
+const HYBRID_RECIPE_SERVER = "localhost";
+
+const SERVER_PATH = "/home/ubuntu";
+const G_ABS_PATH_2X = "/GarudaGatewayPro";
+const HYBRID_RECIPE_FILES_ROOT_FOLDER = "/hybridRecipeFiles";
+
+const DASHBOARD_GADGET_ICON_ROOT_PATH = "http://localhost:7777/image/";
+
+var S3_ENABLED = "";
+var DOWNLOAD_ROOT_PATH = "";
+var SERVER_ABSOLUTE_PATH = "";
+var URL = "";
+
+if(ENV.DEVELOPMENT)
+{
+  URL = DEV_2X;
+  DOWNLOAD_ROOT_PATH = METHOD + "://" + SCYLLA_PATH_2X_DEV + ":" + SCYLLA_PORT;
+  SERVER_ABSOLUTE_PATH = METHOD + "://" + SCYLLA_PATH_2X_DEV + ":" + SCYLLA_PORT + SERVER_PATH;
+  G_absolutePath = METHOD + "://" + DEV_2X + ":" + APACHE_PORT + G_ABS_PATH_2X;
+}
+else
+{
+  URL = PROD_2X;
+  DOWNLOAD_ROOT_PATH = METHOD + "://" + PROD_2X + ":" + SCYLLA_PORT;
+  SERVER_ABSOLUTE_PATH = METHOD + "://" + PROD_2X + ":" + SCYLLA_PORT + SERVER_PATH;
+  G_absolutePath = METHOD + "://" + PROD_2X + ":" + APACHE_PORT + G_ABS_PATH_2X;
+}
+
+const CONFIG = {
+  SCYLLA_PORT: SCYLLA_PORT,
+  APACHE_PORT: APACHE_PORT,
+  HYBRID_RECIPE_PORT: HYBRID_RECIPE_PORT,
+  HYBRID_RECIPE_SERVER: HYBRID_RECIPE_SERVER,
+  HYBRID_RECIPE_FILES_ROOT_FOLDER: HYBRID_RECIPE_FILES_ROOT_FOLDER,
+  DASHBOARD_GADGET_ICON_ROOT_PATH: DASHBOARD_GADGET_ICON_ROOT_PATH,
+  URL: URL,
+  METHOD: METHOD,
+  DOWNLOAD_ROOT_PATH: DOWNLOAD_ROOT_PATH,
+  SERVER_ABSOLUTE_PATH: SERVER_ABSOLUTE_PATH,
+  G_absolutePath: G_absolutePath
+};
+
+export {CONFIG};

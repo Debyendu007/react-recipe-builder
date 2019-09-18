@@ -1,0 +1,5 @@
+const RESPONSE_CODE = {
+  SUCCESS: 200
+};
+
+export {RESPONSE_CODE};
