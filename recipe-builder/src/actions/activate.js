@@ -1,6 +1,6 @@
 import {ACTION_ACTIVATION} from "../action-list";
-import {Utility} from "./../common/utils";
-import {RESPONSE_CODE} from "./../common/response-code";
+// import {Utility} from "./../common/utils";
+// import {RESPONSE_CODE} from "./../common/response-code";
 import {useDispatch} from "react-redux";
 
 const Activating = () => {
@@ -15,15 +15,16 @@ const Activated = (action) => {
   });
 }
 
-window.handleActivateGadgetResponse = (response) => {
-  const dispatch = useDispatch();
-  let action = ACTION_ACTIVATION.GADGET_ACTIVATED;
+// window.handleActivateGadgetResponse = (response) => store => {
+//   // const dispatch = useDispatch();
+//   let action = ACTION_ACTIVATION.GADGET_ACTIVATED;
 
-  if(Utility.isUndefinedOrEmptyObject(response) || RESPONSE_CODE.SUCCESS != response.body.result) {
-    action = ACTION_ACTIVATION.ACTIVATION_FAILED;
-  }
+//   if(Utility.isUndefinedOrEmptyObject(response) || RESPONSE_CODE.SUCCESS != response.body.result) {
+//     action = ACTION_ACTIVATION.ACTIVATION_FAILED;
+//   }
 
-  dispatch(Activated(action));
-}
+//   store.dispatch(Activated(action));
 
-export {Activating};
+// };
+
+export {Activating, Activated};

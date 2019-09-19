@@ -1,5 +1,5 @@
 const ENV = {
-  DEVELOPMENT: true,
+  DEVELOPMENT: false,
   GLOBAL_RECIPE: true
 };
 
