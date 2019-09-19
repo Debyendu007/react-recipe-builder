@@ -4,19 +4,20 @@ import Button from "react-bootstrap/Button";
 
 const Utility = {
   isUndefinedOrEmptyObject : (object) => {
-    if(typeof object ==	typeof undefined || null == object || object.length == 0) {
+    if(typeof object ===	typeof undefined || null === object || object.length === 0) {
       return true;
     }
     
     return false;
   },
   isWebSDKInitiated : () => {
-    let _socket = garudapro.webapi.scylla.connnection.socket;
+    let _socket = window.garudapro.webapi.scylla.connnection.socket;
 	
-	  return ( !this.isUndefinedOrEmptyObject(_socket) );
+	  return ( !Utility.isUndefinedOrEmptyObject(_socket) );
   },
   isNullOrEmpty : (data) => {
-    if(typeof undefined == typeof data  || null == data || "" == data || "" == data.trim()) {
+    console.log(typeof data)
+    if(typeof undefined === typeof data  || null === data || "" === data || "" === data.trim()) {
       return true;
     }
     

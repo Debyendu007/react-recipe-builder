@@ -22,20 +22,6 @@ else
 	gadget_key = "FbvkhrpNgtOxhA72tEOhS0PN30LdsPa+iH6IMXYxv6I=";
 }
 
-var scylla_config = 
-{
-		scheme					: 	CONFIG.METHOD,
-		port					: 	scylla_port,
-		host					:  	host
-};
-
-var cdn_config = 
-{
-		scheme					: 	CONFIG.METHOD,
-		port					: 	apache_port,
-		host					:	host
-};
-
 Config.gadgetID = gadget_key;
 
 const SCYLLA_CONFIG = {
@@ -47,7 +33,7 @@ const SCYLLA_CONFIG = {
 const isExecutedFromCloud = true;
 
 export {
-  CONFIG,
+  Config,
   SCYLLA_CONFIG,
   isExecutedFromCloud
 };

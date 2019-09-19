@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./body.css";
 import {useDispatch} from "react-redux";
 
@@ -10,9 +10,16 @@ import {Activating} from "./../../actions/activate";
 import {ViewModal} from "./../../common/utils";
 
 function BodySection(props) {
-  const dispatch = useDispatch();
-
+  console.log(props)
   if(props.isActivated) {
+    if(props.isLoggedIn) {
+      return <LandingPage />
+    }
+    else {
+      return <LoginPage />
+    }
+  }
+  else {
     if(props.isActivationFailed) {
       let header = "Gadget Activation error";
       let body="Some error occured while activating your gadget";
@@ -21,37 +28,47 @@ function BodySection(props) {
       return ViewModal.ShowAlert(header, body, iconPath);
     }
     else {
-      if(props.isLoggedIn) {
-        return <LandingPage />
-      }
-      else {
-        return <LoginPage />
-      }
+      return (
+        <CustomLoader
+          show={true}
+          isActivating={props.isActivating}>
+        </CustomLoader>
+      )
     }
   }
-  else {
-    let text = "Activating Recipe Builder";
+}
 
-    if(!props.isActivating) {
-      text = "Starting Recipe Builder"
-      dispatch(Activating());
-    }
+function CustomLoader(props) {
+  const dispatch = useDispatch();
+  let show = props.show;
 
-    return (
-      <LoadingOverlay
-        className="page-loader"
-        active={true}
-        spinner
-        text={text}>
-      </LoadingOverlay>
-    )
+  useEffect(() => {
+    dispatch(Activating());
+  });
+
+  let text = "Activating Recipe Builder";
+
+  if(!props.isActivating) {
+    text = "Starting Recipe Builder";
   }
+
+  return (
+    <LoadingOverlay
+      className="page-loader"
+      active={show}
+      spinner
+      text={text}>
+    </LoadingOverlay>
+  );
 }
 
 function Body(props) {
   return (
     <Container className="mt-62" fluid={true}>
-      <BodySection isLoggedIn={props.isLoggedIn} />
+      <BodySection isActivated={props.isActivated}
+            isLoggedIn={props.isLoggedIn}
+            isActivating={props.isActivating}
+            isActivationFailed={props.isActivationFailed} />
     </Container>
   );
 }
