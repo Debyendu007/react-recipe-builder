@@ -3,7 +3,7 @@ import {ACTION_ACTIVATION} from "../action-list";
 import {Utility} from "./../common/utils";
 import {RESPONSE_CODE} from "./../common/response-code";
 
-const web_sdk_events_cb = store => {
+const RegisterActivateResponse = (dispatch) => {
   window.handleActivateGadgetResponse = (response) => {
     // const dispatch = useDispatch();
     let action = ACTION_ACTIVATION.GADGET_ACTIVATED;
@@ -12,8 +12,8 @@ const web_sdk_events_cb = store => {
       action = ACTION_ACTIVATION.ACTIVATION_FAILED;
     }
   
-    store.dispatch(Activated(action));
+    dispatch(Activated(action));
   };
 }
 
-export {web_sdk_events_cb};
+export {RegisterActivateResponse};

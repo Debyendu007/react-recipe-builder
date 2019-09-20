@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import "./body.css";
 import {useDispatch} from "react-redux";
 
@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import LoadingOverlay from 'react-loading-overlay';
 import {Activating} from "./../../actions/activate";
 import {ViewModal} from "./../../common/utils";
+import {RegisterActivateResponse} from "./../../apiCalls/web-sdk-res";
 
 function BodySection(props) {
   console.log(props)
@@ -28,12 +29,19 @@ function BodySection(props) {
       return ViewModal.ShowAlert(header, body, iconPath);
     }
     else {
-      return (
-        <CustomLoader
-          show={true}
-          isActivating={props.isActivating}>
-        </CustomLoader>
-      )
+      console.log("333 111 : " + JSON.stringify(props));
+      if(!props.isActivating) {
+        console.log("333 : " + JSON.stringify(props));
+        return (
+          <CustomLoader
+            show={true}
+            isActivating={props.isActivating}>
+          </CustomLoader>
+        )
+      }
+      else {
+        return null;
+      }
     }
   }
 }
@@ -44,6 +52,7 @@ function CustomLoader(props) {
 
   useEffect(() => {
     dispatch(Activating());
+    RegisterActivateResponse(dispatch);
   });
 
   let text = "Activating Recipe Builder";
