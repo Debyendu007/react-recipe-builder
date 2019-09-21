@@ -1,6 +1,4 @@
 import {ACTION_ACTIVATION} from "../action-list";
-// import {Utility} from "./../common/utils";
-// import {RESPONSE_CODE} from "./../common/response-code";
 
 const Activating = () => {
   return ({
