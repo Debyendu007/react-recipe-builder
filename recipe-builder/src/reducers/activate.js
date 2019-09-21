@@ -16,8 +16,8 @@ const activateGadgetReducer = (state=initialActivationState, action) => {
 
       return {
         activating: true,
-        activated: false,
-        activationFailed: false
+      activated: false,
+      activationFailed: false
       };
     case ACTION_ACTIVATION.GADGET_ACTIVATED:
       
@@ -32,7 +32,7 @@ const activateGadgetReducer = (state=initialActivationState, action) => {
         activated: false,
         activationFailed: true
       };
-    default: return state
+    default: return state;
   }
 }
 

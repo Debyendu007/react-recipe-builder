@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import WarningIcon from "./../assets/icons/warning.png";
 
 const Utility = {
   isUndefinedOrEmptyObject : (object) => {
@@ -28,34 +29,43 @@ const Utility = {
 const ViewModal = {
   ShowAlert : (header=null, body=null, icon=null, show=true) => {
     return (
-      <MyModal 
-        show={show}
-        header={header}
-        body={body}
-        icon={icon}/>
+      <MyModal
+      header={header}
+      body={body}
+      icon={icon}
+      />
     )
   }
 }
 
 const MyModal = (props) => {
+  
+  const [show, setShow] = useState(true);
+  
+  const handleClose = () => setShow(false);
+
   return (
     <Modal
-    show={props.show}
-    size="lg"
+    show={show}
+    size="md"
     aria-labelledby="contained-modal-title-vcenter"
-    centered>
-      <Modal.Header closeButton>
+    animation={false}
+    centered
+    onHide={handleClose}>
+      <Modal.Header>
         <Modal.Title>
-          props.header
+          {props.header}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <img src={props.icon}></img>
-        <br />
-        <font>{props.body}</font>
+        <span>
+          <img src={WarningIcon}></img>
+          &nbsp;&nbsp;
+          <font>{props.body}</font>
+        </span>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="danger" onClick={() => ViewModal.ShowAlert(!props.show)}>Close</Button>
+        <Button variant="danger" onClick={handleClose}>Close</Button>
       </Modal.Footer>
     </Modal>
   );

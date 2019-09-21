@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./body.css";
 import {useDispatch} from "react-redux";
 
@@ -11,9 +11,11 @@ import {ViewModal} from "./../../common/utils";
 import {RegisterActivateResponse} from "./../../apiCalls/web-sdk-res";
 
 function BodySection(props) {
-  console.log(props)
-  if(props.isActivated) {
-    if(props.isLoggedIn) {
+  const dispatch = useDispatch();
+  let loaderText = "";
+
+  if(props.activated) {
+    if(props.loggedIn) {
       return <LandingPage />
     }
     else {
@@ -21,52 +23,44 @@ function BodySection(props) {
     }
   }
   else {
-    if(props.isActivationFailed) {
+    if(props.activationFailed) {
       let header = "Gadget Activation error";
       let body="Some error occured while activating your gadget";
-      let iconPath="/assets/icons/warning.png";
+      let iconPath="./../../assets/icons/warning.png";
 
       return ViewModal.ShowAlert(header, body, iconPath);
     }
     else {
-      console.log("333 111 : " + JSON.stringify(props));
-      if(!props.isActivating) {
-        console.log("333 : " + JSON.stringify(props));
-        return (
-          <CustomLoader
-            show={true}
-            isActivating={props.isActivating}>
-          </CustomLoader>
-        )
+      if(!props.activating) {
+        dispatch(Activating());
+        RegisterActivateResponse(dispatch);
+
+        loaderText = "Activating Recipe builder";
       }
       else {
-        return null;
+        loaderText = "Loading Recipe Player";
       }
+
+      return (
+        <CustomLoader
+          show={true}
+          text={loaderText}>
+        </CustomLoader>
+      )
     }
   }
 }
 
 function CustomLoader(props) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   let show = props.show;
-
-  useEffect(() => {
-    dispatch(Activating());
-    RegisterActivateResponse(dispatch);
-  });
-
-  let text = "Activating Recipe Builder";
-
-  if(!props.isActivating) {
-    text = "Starting Recipe Builder";
-  }
 
   return (
     <LoadingOverlay
       className="page-loader"
       active={show}
       spinner
-      text={text}>
+      text={props.text}>
     </LoadingOverlay>
   );
 }
@@ -74,10 +68,10 @@ function CustomLoader(props) {
 function Body(props) {
   return (
     <Container className="mt-62" fluid={true}>
-      <BodySection isActivated={props.isActivated}
-            isLoggedIn={props.isLoggedIn}
-            isActivating={props.isActivating}
-            isActivationFailed={props.isActivationFailed} />
+      <BodySection activated={props.activated}
+            loggedIn={props.loggedIn}
+            activating={props.activating}
+            activationFailed={props.activationFailed} />
     </Container>
   );
 }
