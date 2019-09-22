@@ -10,7 +10,7 @@ const initialLoginState = {
 
 const loginReducer = (state=initialLoginState, action) => {
   switch(action.type) {
-    case ACTION_LOGIN.LOGGING_IN:
+    case ACTION_LOGIN.LOGIN:
       return {
         loggingIn: true,
         loggedIn: false,
@@ -28,7 +28,6 @@ const loginReducer = (state=initialLoginState, action) => {
       };
       case ACTION_LOGIN.LOGIN_FAILED:
         return {
-
           loggingIn: false,
           loggedIn: false,
           logInFailed: true,

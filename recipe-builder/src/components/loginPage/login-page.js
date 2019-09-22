@@ -14,12 +14,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons/faEnvelope";
 import {faKey} from "@fortawesome/free-solid-svg-icons/faKey";
-import {faCog} from "@fortawesome/free-solid-svg-icons/faCog";
 
 import {FORGOT_USERNAME, FORGOT_PASSWORD} from "./../../common/external-links";
 import {LIMITS} from "./../../common/constants";
 import {LoginButton} from "./processLogin";
-import {LoggingIn, LoginFailed, LoginSuccess} from "./../../actions/login";
 
 function StatusSection(props) {
   let class_name = "";
@@ -32,10 +30,6 @@ function StatusSection(props) {
 
     if(props.isError) {
       class_name = "error";
-      setStatusMessage(props.message);
-    }
-    else {
-      setStatusMessage("Login Successfull");
     }
   }
 
@@ -43,7 +37,7 @@ function StatusSection(props) {
     <React.Fragment>
       <Row className="justify-content-md-center">
         <Col md="auto">
-          <font className={class_name}></font>
+          <font className={class_name}>{props.message}</font>
         </Col>
       </Row>
       <br />
@@ -62,9 +56,20 @@ function BSFormInput() {
     window.open(FORGOT_PASSWORD, "_blank");
   }
 
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const updateUserName = (e) => {
+    setUserName(e.target.value);
+  }
+
+  const updatePassword = (e) => {
+    setPassword(e.target.value);
+  }
+
   return(
     <React.Fragment>
-      <StatusSection isActive={false} isError={false} message="" />
+      <StatusSection isActive={false} isError={false} message={loginState.loginReqMessage} />
       <Row className="justify-content-lg-center">
         <Col lg={true}>
           <InputGroup size="md" className="mb-3">
@@ -77,7 +82,8 @@ function BSFormInput() {
                           placeholder="Enter Email"
                           aria-label="Email"
                           aria-describedby="user-email-icon"
-                          maxLength={LIMITS.USERNAME.MAX}></FromControl>
+                          maxLength={LIMITS.USERNAME.MAX}
+                          onChange={updateUserName}></FromControl>
             <InputGroup.Append>
               <Button variant="secondary" onClick={redirectToForgotUserName}>forgot</Button>
             </InputGroup.Append>
@@ -97,7 +103,7 @@ function BSFormInput() {
                           placeholder="Enter Password"
                           aria-label="Password"
                           aria-describedby="user-password-icon"
-                          ></FromControl>
+                          onChange={updatePassword}></FromControl>
             <InputGroup.Append>
               <Button variant="secondary" onClick={redirectToForgotPassword}>forgot</Button>
             </InputGroup.Append>
@@ -107,7 +113,7 @@ function BSFormInput() {
       <br />
       <Row className="justify-content-lg-center">
         <Col id="btn-login-container" lg="auto">
-          <LoginButton loggingIn={loginState.loggingIn} />
+          <LoginButton loggingIn={loginState.loggingIn} username={username} password={password} />
         </Col>
       </Row>
     </React.Fragment>

@@ -17,7 +17,6 @@ const Utility = {
 	  return ( !Utility.isUndefinedOrEmptyObject(_socket) );
   },
   isNullOrEmpty : (data) => {
-    console.log(typeof data)
     if(typeof undefined === typeof data  || null === data || "" === data || "" === data.trim()) {
       return true;
     }

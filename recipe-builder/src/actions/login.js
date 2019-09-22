@@ -2,20 +2,22 @@ import {ACTION_LOGIN} from "../action-list";
 
 const LoggingIn = () => {
   return ({
-    type: ACTION_LOGIN.LOGGING_IN,
+    type: ACTION_LOGIN.LOGIN,
     message: "Making Login Request"
   });
 }
 
-const LoginSuccess = (action) => {
+const LoginSuccess = (param=null) => {
   return ({
-    type: ACTION_LOGIN.LOGIN_SUCCESS
+    type: ACTION_LOGIN.LOGIN_SUCCESS,
+    message: "Logged in Successfully"
   });
 }
 
-const LoginFailed = (action) => {
+const LoginFailed = (param=null) => {
   return ({
-    type: ACTION_LOGIN.LOGIN_FAILED
+    type: ACTION_LOGIN.LOGIN_FAILED,
+    message: "Login Failed"
   });
 }
 
