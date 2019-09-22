@@ -13,7 +13,7 @@ function App() {
       <Body activated={activationState.activated}
             loggedIn={loginState.loggedIn}
             activating={activationState.activating}
-            activationFailed={activationState.activationFailed} />
+            activationFailed={activationState.activationFailed}/>
     </React.Fragment>
   );
 }
